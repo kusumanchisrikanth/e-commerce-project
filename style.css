@@ -14,7 +14,7 @@
 	width: 400px;
 	height: 500px;
 	position: relative;
-	background: #F5F5F5;
+	background: #ddd;
 	padding:4px;
     margin:6% auto;
     box-shadow: 0 0 10px 5px #404040;
@@ -91,7 +91,7 @@
 }
 
 
-
+/*---------------------------HOME PAGE------------------------------------------*/
 
 
 .top-nav-bar{ 
@@ -153,7 +153,7 @@
 	width: 40%;
 	height: 57px;
 	float:right;
-	margin-top: 23px !important;
+	margin-top: 22px !important;
 	margin-bottom: 23px !important;
 	
 }
@@ -218,4 +218,86 @@
 		height: 57px;
 		width: 100%;
 	}
+}
+
+/*------------------------------MENU- BAR-----------------------*/
+
+
+.side-menu
+{
+   height: 79% !important;
+   width: 15%;
+   font-size: 14px;
+   float: left;
+   z-index: 2;
+   background-color: #ddd;
+}
+.side-menu ul
+{
+	margin-left: 10px;
+}
+.side-menu ul li
+{
+	list-style-type: none !important;
+	font-weight: bold !important;
+	margin-top: 10px !important;
+	cursor: pointer !important;
+}
+.side-menu ul li:hover
+{
+	color: orange;
+}
+.side-menu ul li ul
+{ 
+	display: none;
+	z-index: 10;
+	top: 77px;
+}
+.side-menu ul li:hover ul 
+{
+	display: block;
+	height: 400px;
+	margin-left: 14%;
+	padding: 0 100px 10px 10px;
+	position: fixed;
+	background: #ececec;
+	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.5);
+}
+.fa-angle-right
+{
+   margin-top: 4px;
+   margin-right: 8px;
+   float: right;
+}
+#menu-btn, #close-btn{
+	font-size: 30px;
+	margin: 10px;
+	color: orange;
+	display: none;
+}
+
+
+
+@media only screen and (max-width: 980px)
+{
+	.side-menu
+	{
+		width: 34%;
+		z-index: 20;
+		top: 200px;
+		position: fixed;
+		font-size: 12px;
+		display: none;
+	}
+    .side-menu ul li ul
+    {
+     	top: 133px;
+    }
+    .side-menu ul li:hover ul
+    {
+     	margin-left: 31%;
+    }
+    #menu-btn{
+    	display: block;
+    }
 }
