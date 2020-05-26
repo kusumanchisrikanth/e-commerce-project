@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact us Form</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        .container{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+        <!--  navbar start -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+            <a class="navbar-brand" href="/">
+              <img src="./images/logo1.png" height="50px" alt="">
+            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="form-inline my-2 my-lg-0 mx-auto search-bar" action="/search" method="POST" >
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit" value="search">Search</button>
+          </form>
+          <ul class="navbar-nav custom-navbar">
+            <li class="nav-item bg-success rounded-pill px-3 m-1 text-center">
+              <a class="nav-link text-white" href="/"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item rounded-pill bg-success px-3 m-1 text-center">
+              <a class="nav-link text-white" href="/add"><i class="fa fa-camera"></i> Post a free add</a>
+            </li>
+            <li class="nav-item rounded-pill bg-success px-3 m-1 text-center">
+              <a class="nav-link text-white" href="/profile"><i class="fa fa-user"></i> Profile</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <!--  navbar end -->
+    <!-- Free add form start  -->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12 offset-0 border border-dark p-5">
+                <form id="form"  enctype="multipart/form-data" action="/add" method="POST" >
+                    <h1 class="h1 text-center">Post a Free Add </h1>
+                    <div class="form-group">
+                        <label for="Select">Select a Category</label>
+                        <select class="form-control" name="category" id="Select">
+                            <option>Electronics</option>
+                            <option>Mobiles</option>
+                            <option>Home appliances</option>
+                            <option>Vehicles</option>
+                            <option>Books,Sports</option>
+                            <option>Engineering stationery</option>
+                            <option>Accessories</option>
+                            <option>Others</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label for="name">Product Name</label>
+                      <input type="text" name="name" class="form-control" id="name" >
+                    </div>
+                    <div class="form-group">
+                      <label for="price">Price</label>
+                      <input type="number" name="price" class="form-control" id="price">
+                    </div>
+                    <label> Product condition </label>
+                    <div class="row mb-3">
+                        <div class="custom-control custom-radio col-4 text-center">
+                            <input type="radio" class="custom-control-input" id="customRadio1" name="condition" value="excellent">
+                            <label class="custom-control-label" for="customRadio1">Excellent</label>
+                          </div>
+                        <div class="custom-control custom-radio col-4 text-center">
+                            <input type="radio" class="custom-control-input" id="customRadio2" name="condition" value="good">
+                            <label class="custom-control-label" for="customRadio2">Good</label>
+                          </div>
+                        <div class="custom-control custom-radio col-4 text-center">
+                            <input type="radio" class="custom-control-input" id="customRadio3" name="condition" value="average">
+                            <label class="custom-control-label" for="customRadio3">Average</label>
+                          </div>     
+                    </div>
+                    <div class="form-group">
+                        <label for="Describe">Describe Your Product</label>
+                        <textarea class="form-control" name="description" id="Describe" rows="3"></textarea>
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" name="photo" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label"  for="customFile">Choose file</label>
+                      </div>
+                      <div class="form-group mt-3">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="location" id="location" >
+                      </div>
+                      <div class="form-group mt-3">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" class="form-control" name="phone" id="phone" >
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="isprivate">
+                        <label class="custom-control-label" for="customCheck">Keep your phone number private</label>
+                      </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <!-- Free add form end  -->
+    <footer class="footer mb-5">
+      <div class="container">
+        <div class="text-muted text-center">Made with love by srikanth and karthik</div>
+      </div>
+    </footer>
+<!-- modal start -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deal UP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body h2 text-success">
+          Your <%= name %> is on sale now.....
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a  href="./index.html" class="btn btn-primary">Go to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- modal end -->
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/font.js"></script>
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
+    console.log("<%= modal %>")
+    if("<%= modal %>" == "true"){
+      $("#Modal").modal()
+    }
+    </script>
+</body>
+</html>
