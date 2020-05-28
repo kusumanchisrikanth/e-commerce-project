@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+            <!--  navbar start -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+                <a class="navbar-brand" href="/">
+                  <img src="../images/logo1.png"height="50px" alt="">
+                </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <form class="form-inline my-2 my-lg-0 mx-auto search-bar" action="/search" method="POST" >
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit" value="search">Search</button>
+              </form>
+              <ul class="navbar-nav custom-navbar">
+                <li class="nav-item bg-success rounded-pill px-3 m-1 text-center">
+                  <a class="nav-link text-white" href="/"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item rounded-pill bg-success px-3 m-1 text-center">
+                  <a class="nav-link text-white" href="/add"><i class="fa fa-camera"></i> Post a free add</a>
+                </li>
+                <li class="nav-item rounded-pill bg-success px-3 m-1 text-center">
+                  <a class="nav-link text-white" href="/profile"><i class="fa fa-user"></i> Profile</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        <!--  navbar end -->
+
+          <!-- Product start -->
+
+          <div class="container mt-5 pt-5">
+              <div class="row">
+                  <div class="col-lg-6 col-12">
+                      <img src="../uploads/<%= docs.photo %>" alt="shoes" width="100%">
+                  </div>
+                  <div class="col-lg-6 col-12">
+                    <h1><%= docs.name%></h1>
+                    <% if(docs.condition == "excellent") { %>
+                    <h4><span class="badge badge-success">Excellent</span></h4>
+                    <% } else if(docs.condition == "good"){ %>
+                    <h4><span class="badge badge-warning">Good</span></h4>
+                    <% } else if(docs.condition == "average"){ %>
+                      <h4><span class="badge badge-danger">Average</span></h4>
+                     <% } %> 
+                    <h2 class="lead h2">Price: <%= docs.price%>/-</h2>
+                    <p> <span class="font-weight-bold">Description: </span> <%= docs.description%></p>
+                    <p><span class="font-weight-bold">Location:</span> <%= docs.location%> </p>
+                    <% if(!docs.isprivate) { %>
+                    <p><span class="font-weight-bold">phone:</span><%= docs.phone %> </p>
+                    <% } %>
+                    <button class="btn btn-success"   data-toggle="modal" data-target="#Modal">Are you Intrested ?</button>
+                </div>
+              </div>
+          </div>
+
+          <!-- Product end -->
+          
+    <!-- items start -->
+    <div class="container mt-5 pt-5">
+      <% if( documents.length ) { %>
+        <h1 class="text-center"> Recommended products </h1>
+        <% } %> 
+        <div class="row">
+          <% for(var i = 0 ; i < documents.length ; i++) { %>
+          <div class="col-lg-4 col-md-6 col-sm-12 p-5">
+            <div class="card shadow-lg">
+              <img src="../uploads/<%= documents[i].photo %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h2 class="card-title"><%= documents[i].name %></h2>
+                <p class="lead">Price: <%= documents[i].price %>/-</p>
+                <a class="btn btn-success text-white" href="./product/<% documents[i]._id %>">View product</a>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <!-- items end -->
+<!-- modal start -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Are you sure! *your details will be shared to the product owner* </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body font-weight-bold">
+            should we make a deal ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="/sendmail" method="POST">
+            <input type="hidden" name="ownerid" value="<%= docs.ownerid %>">
+            <input type="submit" class="btn btn-primary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- modal end -->
+<footer class="footer mb-5">
+  <div class="container">
+    <div class="text-muted text-center">copy right reserved @ 2020</div>
+  </div>
+</footer>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/font.js"></script>
+</body>
+</html>
